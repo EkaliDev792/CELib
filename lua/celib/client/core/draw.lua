@@ -1,5 +1,5 @@
--- Sers à faire un gradient sur un panel
-function CELib.DrawGradientOnPanel(x, y, w, h, ...)
+-- Sers à faire un dégradé
+function CELib.DrawGradient(x, y, w, h, ...)
 
     local clr = { ... }
 
@@ -11,4 +11,3 @@ function CELib.DrawGradientOnPanel(x, y, w, h, ...)
 
 
 end
-
