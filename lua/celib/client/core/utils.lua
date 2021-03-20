@@ -36,3 +36,67 @@ function CELib.GetDateTime()
 
     return os.date( "%d/%m/%Y - %H:%M:%S")
 end
+
+-- Récupère la personne la plus riche sur le serveur -> CELib.GetMostRich().name -> nom du joueur
+function CELib.GetMostRich()
+
+    local tbl = {}
+
+    for _, v in pairs(player.GetAll()) do
+
+        local nl = {
+            ["ply"] = v,
+            ["name"] = v:Name(),
+            ["money"] = v:getDarkRPVar("money")
+        }
+
+        tbl[#tbl + 1] = nl
+    end
+
+    for k, v in SortedPairsByMemberValue(tbl, "money", true) do
+
+        tbl = {
+            ["ply"] = v.ply,
+            ["name"] = v.name,
+            ["money"] = v.money
+        }
+
+
+        break
+    end
+
+    return tbl
+end
+
+-- Récupère la personne la plus pauvre sur le serveur -> CELib.GetMostRich().name -> nom du joueur
+function CELib.GetMostPoor()
+
+    local tbl = {}
+
+    for _, v in pairs(player.GetAll()) do
+
+        local nl = {
+            ["ply"] = v,
+            ["name"] = v:Name(),
+            ["money"] = v:getDarkRPVar("money")
+        }
+
+        tbl[#tbl + 1] = nl
+    end
+
+    for k, v in SortedPairsByMemberValue(tbl, "money", false) do
+
+        tbl = {
+            ["ply"] = v.ply,
+            ["name"] = v.name,
+            ["money"] = v.money
+        }
+
+
+        break
+    end
+
+    return tbl
+end
+
+PrintTable(CELib.GetMostPoor())
