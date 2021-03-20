@@ -6,7 +6,6 @@ function CELib.GetPercentage(num, effectif)
     return math.Round(percent)
 end
 
-
 --Récuperer un nombre d'un pourcentage, exemple 80% de 400 = 320 = CELib.GetFromPercentage(80, 400)
 function CELib.GetFromPercentage(percentage, effectif)
     local percent = (percentage*effectif)/100
@@ -25,8 +24,11 @@ function CELib.ServerInfo()
     local tbl = {
         ["map"] = game.GetMap(),
         ["ip"] = game.GetIPAddress(),
-        ["online"] = #player.GetAll()
+        ["online"] = #player.GetAll(),
+        ["name"] = GetHostName()
     }
 
     return tbl
 end
+
+print(CELib.ServerInfo().name)
