@@ -27,3 +27,11 @@ function CELib.DrawBlur(pnl, intIntensity, intAmount)
         surface.DrawTexturedRect(intX * -1, intY * -1, intSW, intSH)
     end
 end
+
+function CELib.BeginDrawShadow()
+    BSHADOWS.BeginShadow()
+end
+
+function CELib.EndDrawShadow(intensity, spread, blur, opacity)
+    BSHADOWS.EndShadow(intensity, spread, blur, opacity, 0, 0)
+end
