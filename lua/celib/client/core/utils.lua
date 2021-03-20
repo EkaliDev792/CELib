@@ -98,5 +98,3 @@ function CELib.GetMostPoor()
 
     return tbl
 end
-
-PrintTable(CELib.GetMostPoor())
