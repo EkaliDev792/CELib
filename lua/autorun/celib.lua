@@ -16,8 +16,10 @@ local function Loading()
     
         local files = file.Find(path..'/client/core/*.lua', 'LUA')
         for _, file in ipairs(files) do
-            AddCSLuaFile(path..'/client/'..file)
+            AddCSLuaFile(path..'/client/core/'..file)
         end
+        
+        print("[CELib] Loaded with successfully !")
     end
     
     if CLIENT then
@@ -28,9 +30,11 @@ local function Loading()
     
         local files = file.Find(path..'/client/core/*.lua', 'LUA')
         for _, file in ipairs(files) do
-            include(path..'/client/'..file)
+            include(path..'/client/core/'..file)
         end
     end
 end
+
+concommand.Add("celib_reload", Loading)
 
 Loading()
