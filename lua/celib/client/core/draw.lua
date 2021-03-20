@@ -13,7 +13,7 @@ function CELib.DrawGradient(x, y, w, h, ...)
 end
 
 -- Sers à faire un effet blur
-function CELib:DrawBlur(pnl, intIntensity, intAmount)
+function CELib.DrawBlur(pnl, intIntensity, intAmount)
     local intX, intY = pnl:LocalToScreen(0, 0)
     local intSW, intSH = ScrW(), ScrH()
     
