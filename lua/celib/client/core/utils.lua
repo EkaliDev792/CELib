@@ -90,3 +90,21 @@ function CELib.GetMostPoor()
 
     return tbl
 end
+
+-- Récupère toutes les icons de font awesome exemeple pour get toutes les solids -> icons.solid
+/* Liste
+
+    solid
+    regular
+    brands
+
+*/
+function CELib.GetAllFontAwesomeIcon()
+    local icons = {}
+
+    http.Fetch("https://raw.githubusercontent.com/gluons/Font-Awesome-Icon-Chars/master/character-list/character-list.json", function(body)
+        icons = util.JSONToTable(body)
+    end)
+
+    return icons
+end
