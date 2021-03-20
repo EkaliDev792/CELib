@@ -2,6 +2,12 @@ local path = 'celib'
 
 local function Loading()
     if SERVER then
+
+        local files = file.Find(path..'/server/*.lua', 'LUA')
+        for _, file in ipairs(files) do
+            include(path..'/server/'..file)
+        end
+
         local files = file.Find(path..'/shared/*.lua', 'LUA')
         for _, file in ipairs(files) do
             AddCSLuaFile(path..'/shared/'..file)
