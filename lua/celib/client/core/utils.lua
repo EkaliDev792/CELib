@@ -30,3 +30,9 @@ function CELib.ServerInfo()
 
     return tbl
 end
+
+--Récupère la date et l'heure
+function CELib.GetDateTime()
+
+    return os.date( "%d/%m/%Y - %H:%M:%S")
+end
