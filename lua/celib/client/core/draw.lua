@@ -1,3 +1,5 @@
+local blur = Material("pp/blurscreen")
+
 -- Sers à faire un dégradé
 function CELib.DrawGradient(x, y, w, h, ...)
 
