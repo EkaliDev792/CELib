@@ -17,7 +17,7 @@ function CELib.DrawBlur(pnl, intIntensity, intAmount)
     local intX, intY = pnl:LocalToScreen(0, 0)
     local intSW, intSH = ScrW(), ScrH()
     
-    surface.SetDrawColor(255, 255, 255)
+    surface.SetDrawColor(color_white)
     surface.SetMaterial(blur)
     
     for i = 1, 3 do
