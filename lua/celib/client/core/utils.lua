@@ -30,5 +30,3 @@ function CELib.ServerInfo()
 
     return tbl
 end
-
-print(CELib.ServerInfo().name)
