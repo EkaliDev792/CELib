@@ -1,10 +1,8 @@
 CELib = CELib or {}
 
 local path = 'celib'
-
 local function Loading()
     if SERVER then
-
         local files = file.Find(path..'/server/*.lua', 'LUA')
         for _, file in ipairs(files) do
             include(path..'/server/'..file)
@@ -36,7 +34,5 @@ local function Loading()
         end
     end
 end
-
-concommand.Add("celib_reload", Loading)
 
 Loading()
