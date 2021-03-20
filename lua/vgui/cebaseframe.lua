@@ -1,7 +1,10 @@
 local PANEL = {}
-CELib.CreateFontSize("Espera", "CELib", 30)
+CELib.CreateFontSize("Espera", "CELib", 28)
+
+AccessorFunc( PANEL, "show_shadow_frame", "ShadowFrame" )
 
 function PANEL:Init()
+    self:SetShadowFrame(true)
     self:SetDraggable(false)
     self:ShowCloseButton(FALSE)
     self:DockMargin(100, 100, 100, 100)
@@ -16,7 +19,7 @@ function PANEL:Init()
     top.Paint = function(_self, w, h)
         surface.SetDrawColor(Color(44, 62, 82))
         surface.DrawRect(5, 0, w - 20, 500)
-        draw.SimpleText(self.title, "CELib:30", 10, -3, Color(93, 127, 165), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.SimpleText(self.title, "CELib:28", 10, -3, Color(93, 127, 165), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
     end
 
     local close = top:Add("DButton")
@@ -41,10 +44,14 @@ function PANEL:SetTitle(title)
 end
 
 function PANEL:Paint(w, h)
-    local x, y = self:LocalToScreen(0, 0)
-    CELib.BeginDrawShadow()
-    draw.RoundedBox(2, x, y, w, h, Color(23, 32, 42))
-    CELib.EndDrawShadow(3, 8, 2, 255)
+    if self:GetShadowFrame() then
+        local x, y = self:LocalToScreen(0, 0)
+        CELib.BeginDrawShadow()
+        draw.RoundedBox(2, x, y, w, h, Color(23, 32, 42))
+        CELib.EndDrawShadow(2, 4, 2, 255)
+    else
+        draw.RoundedBox(2, 0, 0, w, h, Color(23, 32, 42))
+    end
 end
 
 vgui.Register("CELib.Frame", PANEL, "DFrame")
