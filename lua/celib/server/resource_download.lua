@@ -1,2 +1,2 @@
-resource.AddSingleFile("resource/fonts/ledarebolditalic.otf")
-resource.AddSingleFile("resource/fonts/ledaremedium.otf")
+resource.AddSingleFile("resource/fonts/espbold.ttf")
+resource.AddSingleFile("resource/fonts/espreg.ttf")

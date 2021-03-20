@@ -1,3 +1,5 @@
+CELib = CELib or {}
+
 local path = 'celib'
 
 local function Loading()
