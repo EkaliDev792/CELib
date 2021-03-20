@@ -1,35 +1,24 @@
-
 local PANEL = FindMetaTable("Panel")
 
-function PANEL:FadeInPanel(duration, cb)
-    self:SetVisible(true)
+function PANEL:FadeIn(duration, callback)
+    duration = duration or 0.3
+
     self:SetAlpha(0)
-    self:LerpFade(duration, 0, 255, cb)
-end
-
-function PANEL:FadeOutPanel(duration, cb)
-    self:LerpFade(duration, self:GetAlpha(), 0, cb)
-end
-
-function PANEL:FadeTo(finalAlpha)
-    self:LerpFade(0.5, nil, finalAlpha)
-end
-
-function PANEL:LerpFade(duration, _currAlpha, _finalAlpha, _cb)
-    local startTime = SysTime()
-    local origAlpha = _currAlpha or self:GetAlpha()
-    local finalAlpha = _finalAlpha or 0
-
-    local anim = self:NewAnimation(duration, 0, -1, function (_b, pnl)
-        if (_cb) then _cb() end
-        if (origAlpha > finalAlpha) then
-            pnl:SetVisible(false)
+    self:AlphaTo(255, duration, 0, function()
+        if callback and isfunction(callback) then
+            callback()
         end
     end)
+end
 
-    anim.Think = function (anim, pnl, fraction)
-        local alpha = Lerp(fraction, origAlpha, finalAlpha)
-        pnl:SetAlpha(alpha)
-    end
+function PANEL:FadeOut(duration, callback)
+    duration = duration or 0.3
 
+    self:AlphaTo(0, duration, 0, function()
+        self:Remove()
+
+        if callback and isfunction(callback) then
+            callback()
+        end
+    end)
 end
