@@ -6,7 +6,7 @@ function CELib.DrawGradient(x, y, w, h, ...)
     local r, g, b, a = clr[1], clr[2], clr[3], clr[4] or 255
 
     surface.SetMaterial(Material("gradientcelib.png", "smooth"))
-    surface.SetDrawColor(r, g, b)
+    surface.SetDrawColor(r, g, b, a)
     surface.DrawTexturedRect(x, y, w, h)
 
 
