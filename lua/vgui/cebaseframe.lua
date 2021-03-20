@@ -1,6 +1,6 @@
 
 local PANEL = {}
-CELib.CreateFontSize("Espera", "CELib", 25, 30, 80, 90, 10)
+CELib.CreateFontSize("Espera", "CELib", 30)
 function PANEL:Init()
 	self:SetDraggable(false)
     self:ShowCloseButton(FALSE)
