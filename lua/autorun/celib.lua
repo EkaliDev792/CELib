@@ -10,6 +10,11 @@ local function Loading()
             include(path..'/server/'..file)
         end
 
+        local files = file.Find(path..'/client/vgui/*.lua', 'LUA')
+        for _, file in ipairs(files) do
+            include(path..'/client/vgui/'..file)
+        end
+
         local files = file.Find(path..'/shared/*.lua', 'LUA')
         for _, file in ipairs(files) do
             AddCSLuaFile(path..'/shared/'..file)
@@ -28,6 +33,12 @@ local function Loading()
         local files = file.Find(path..'/shared/*.lua', 'LUA')
         for _, file in ipairs(files) do
             include(path..'/shared/'..file)
+        end
+
+        
+        local files = file.Find(path..'/client/vgui/*.lua', 'LUA')
+        for _, file in ipairs(files) do
+            include(path..'/client/vgui/'..file)
         end
     
         local files = file.Find(path..'/client/core/*.lua', 'LUA')
