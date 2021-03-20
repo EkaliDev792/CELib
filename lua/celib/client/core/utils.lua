@@ -92,13 +92,13 @@ function CELib.GetMostPoor()
 end
 
 -- Récupère toutes les icons de font awesome exemeple pour get toutes les solids -> icons.solid
-/* Liste
+--[[ Liste
 
     solid
     regular
     brands
 
-*/
+]]
 function CELib.GetAllFontAwesomeIcon()
     local icons = {}
 
@@ -110,20 +110,20 @@ function CELib.GetAllFontAwesomeIcon()
 end
 
 -- Sers à créer une font avec plusieurs size différentes rapidement -> fontname:size
-/* exemple
+--[[ exemple
 
     CELib.CreateFontSize("masuperfont", "Arial", ( les différentes size vous pouvez en mettre autant que vous vouliez))
 
-*/
+]]
 function CELib.CreateFontSize(fontname, myname, ...)
     if not fontname then return end
     if not myname then return end
     if not ... then return end
 
-    local differentSize = { ... }
+    local differentSize = {...}
 
     for k, v in pairs(differentSize) do
-        surface.CreateFont( myname..":"..v, {
+        surface.CreateFont(myname .. ":" .. v, {
             font = fontname,
             size = v,
         })
@@ -132,9 +132,7 @@ end
 
 -- Récupère et vérifie si un joueur est connecté avec un steamid
 function CELib.GetPlayerBySteamID(stid)
-
-    local pl = player.GetBySteamID( stid )
-
+    local pl = player.GetBySteamID(stid)
     if not pl then return false end
 
     return pl
@@ -142,9 +140,7 @@ end
 
 -- Récupère et vérifie si un joueur est connecté avec un steamid64
 function CELib.GetPlayerBySteamID64(stid)
-
-    local pl = player.GetBySteamID64( stid )
-
+    local pl = player.GetBySteamID64(stid)
     if not pl then return false end
 
     return pl
