@@ -11,3 +11,19 @@ function CELib.DrawGradient(x, y, w, h, ...)
 
 
 end
+
+-- Sers à faire un effet blur
+function CELib:DrawBlur(pnl, intIntensity, intAmount)
+    local intX, intY = pnl:LocalToScreen(0, 0)
+    local intSW, intSH = ScrW(), ScrH()
+    
+    surface.SetDrawColor(255, 255, 255)
+    surface.SetMaterial(blur)
+    
+    for i = 1, 3 do
+        blur:SetFloat("$blur", (i / (intIntensity or 3) ) * (intAmount or 6))
+        blur:Recompute()
+        render.UpdateScreenEffectTexture()
+        surface.DrawTexturedRect(intX * -1, intY * -1, intSW, intSH)
+    end
+end
