@@ -108,3 +108,24 @@ function CELib.GetAllFontAwesomeIcon()
 
     return icons
 end
+
+-- Sers à créer une font avec plusieurs size différentes rapidement -> fontname:size
+/* exemple
+
+    CELib.CreateFontSize("masuperfont", "Arial", ( les différentes size vous pouvez en mettre autant que vous vouliez))
+
+*/
+function CELib.CreateFontSize(fontname, myname, ...)
+    if not fontname then return end
+    if not myname then return end
+    if not ... then return end
+
+    local differentSize = { ... }
+
+    for k, v in pairs(differentSize) do
+        surface.CreateFont( myname..":"..v, {
+            font = fontname,
+            size = v,
+        })
+    end
+end
