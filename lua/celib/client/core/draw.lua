@@ -3,7 +3,7 @@ function CELib.DrawGradient(x, y, w, h, ...)
 
     local clr = { ... }
 
-    local r, g, b = clr[1], clr[2], clr[3]
+    local r, g, b, a = clr[1], clr[2], clr[3], clr[4] or 255
 
     surface.SetMaterial(Material("gradientcelib.png", "smooth"))
     surface.SetDrawColor(r, g, b)
