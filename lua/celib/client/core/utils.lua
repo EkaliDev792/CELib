@@ -13,3 +13,9 @@ function CELib.GetFromPercentage(percentage, effectif)
 
     return math.Round(percent)
 end
+
+--Récuperer la taille d'un text
+function CELib.GetTextSize(texte, police)
+    surface.SetFont(police)
+    return surface.GetTextSize(texte)
+end
