@@ -19,3 +19,14 @@ function CELib.GetTextSize(texte, police)
     surface.SetFont(police)
     return surface.GetTextSize(texte)
 end
+
+--Récuperer les infos du server, exemple print(CELib.ServerInfo().map) -> output la map
+function CELib.ServerInfo()
+    local tbl = {
+        ["map"] = game.GetMap(),
+        ["ip"] = game.GetIPAddress(),
+        ["online"] = #player.GetAll()
+    }
+
+    return tbl
+end
