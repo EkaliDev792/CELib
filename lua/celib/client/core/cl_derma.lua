@@ -1,7 +1,7 @@
 concommand.Add("celib_derma", function ()
 	local mainPanel = vgui.Create("CELib.Frame")
     mainPanel:SetTitle( "CELib - SuperFrame" )
-	mainPanel:SetSize(700,250)
+	mainPanel:SetSize(700,450)
     mainPanel:MakePopup()
     mainPanel:Center()
 
@@ -14,11 +14,11 @@ concommand.Add("celib_derma", function ()
     button2:SetPos(255,50)
     button2:SetText( "Texte de test numéro 1" )
 	button2:SetSize(200,50)
-
     
     local color = vgui.Create("CELib.ColorPicker",mainPanel)
-    color:SetPos(255,50)
-	color:SetSize(200,50)
+    color:SetPos(20,150)
+	color:SetSize(300,300)
+
 
 end)
 
