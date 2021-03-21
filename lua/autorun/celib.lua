@@ -3,6 +3,11 @@ CELib = CELib or {}
 local path = 'celib'
 
 local function Loading()
+
+    //////////////////
+    // SERVEUR LOAD //
+    //////////////////
+
     if SERVER then
 
         local files = file.Find(path..'/server/*.lua', 'LUA')
@@ -29,6 +34,10 @@ local function Loading()
         print("[CELib] Loaded with successfully !")
     end
     
+    //////////////////
+    // CLIENT LOAD //
+    //////////////////
+
     if CLIENT then
         local files = file.Find(path..'/shared/*.lua', 'LUA')
         for _, file in ipairs(files) do
