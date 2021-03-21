@@ -190,3 +190,59 @@ function CELib.GetAdvancedPlayerGetAll()
     return tbl
 
 end
+
+-- Récupère le joueur qu'il regarde
+function CELib.WhoPlayerLook()
+
+    local plSee = LocalPlayer():GetEyeTrace().Entity 
+
+    if not plSee:IsPlayer() then return end
+
+    return plSee
+
+end
+
+-- Récupère les informations avancée de la position du joueur
+/*
+    CELib.GetPos(LocalPlayer()).x = position x
+    CELib.GetPos(LocalPlayer()).y = position y
+    CELib.GetPos(LocalPlayer()).z = position z
+    CELib.GetPos(LocalPlayer()).a = angle
+    CELib.GetPos(LocalPlayer()).eyepos = position de ou le joueur regarde
+
+*/
+function CELib.GetPos(ply)
+
+    local pos = ply:GetPos()
+
+    local nl = {
+        x = pos.x,
+        y = pos.y,
+        z = pos.z,
+        a = ply:GetAngles(),
+        eyepos = ply:GetEyeTrace().HitPos,
+    }
+
+    return nl
+end
+
+-- Récupère les différentes vitesses du joueur
+/*
+    CELib.GetSpeed(ply).speed_run -> Récupère la vitesse de course
+    CELib.GetSpeed(ply).speed_walk -> Récupère la vitesse de marche
+    CELib.GetSpeed(ply).speed_crouch -> Récupère la vitesse accroupie
+*/
+function CELib.GetSpeed(ply)
+    local spd_run = ply:GetRunSpeed()
+    local spd_walk = ply:GetWalkSpeed()
+    local spd_crouch = ply:GetCrouchedWalkSpeed()
+
+    local nl = {
+        speed_run = spd_run,
+        speed_walk = spd_walk,
+        speed_crouch = spd_crouch
+    }
+
+    return nl
+
+end
