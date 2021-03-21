@@ -19,6 +19,10 @@ concommand.Add("celib_derma", function ()
     color:SetPos(90,150)
 	color:SetSize(300,300)
 
+    local combo = vgui.Create("CELib.Combobox",mainPanel)
+    combo:SetPos(90,150)
+	combo:SetSize(100,100)
+
 
 end)
 
