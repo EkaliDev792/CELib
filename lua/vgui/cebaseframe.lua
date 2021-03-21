@@ -2,6 +2,9 @@ local PANEL = {}
 CELib.CreateFontSize("Espera", "CELib", 28)
 
 AccessorFunc( PANEL, "show_shadow_frame", "ShadowFrame" )
+AccessorFunc( PANEL, "color_top", "ColorTop" )
+AccessorFunc( PANEL, "color_frame", "ColorFrame" )
+AccessorFunc( PANEL, "color_text", "ColorText" )
 
 function PANEL:Init()
     self:SetShadowFrame(true)
@@ -9,6 +12,9 @@ function PANEL:Init()
     self:ShowCloseButton(FALSE)
     self:DockMargin(100, 100, 100, 100)
     self:DockPadding(0, 0, 0, 0)
+    self:SetColorTop(Color(44,62,82))
+    self:SetColorFrame(Color(23, 32, 42))
+    self:SetColorText(Color(93, 127, 165))
     self:FadeIn()
     self.lblTitle:SetText("")
     self.title = "CELib-Frame"
@@ -17,9 +23,9 @@ function PANEL:Init()
     top:DockMargin(10, 5, 0, 10)
 
     top.Paint = function(_self, w, h)
-        surface.SetDrawColor(Color(44, 62, 82))
+        surface.SetDrawColor(self:GetColorTop() or Color(44,62,82))
         surface.DrawRect(5, 0, w - 20, 500)
-        draw.SimpleText(self.title, "CELib:28", 10, -3, Color(93, 127, 165), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
+        draw.SimpleText(self.title, "CELib:28", 10, -3, self:GetColorText() or Color(93, 127, 165), TEXT_ALIGN_LEFT, TEXT_ALIGN_LEFT)
     end
 
     local close = top:Add("DButton")
@@ -47,10 +53,10 @@ function PANEL:Paint(w, h)
     if self:GetShadowFrame() then
         local x, y = self:LocalToScreen(0, 0)
         CELib.BeginDrawShadow()
-        draw.RoundedBox(2, x, y, w, h, Color(23, 32, 42))
+        draw.RoundedBox(2, x, y, w, h, self:GetColorFrame() or Color(23, 32, 42))
         CELib.EndDrawShadow(2, 4, 2, 255)
     else
-        draw.RoundedBox(2, 0, 0, w, h, Color(23, 32, 42))
+        draw.RoundedBox(2, 0, 0, w, h, self:GetColorFrame() or Color(23, 32, 42))
     end
 end
 
