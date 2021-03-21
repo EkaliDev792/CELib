@@ -34,9 +34,27 @@ local function Loading()
             AddCSLuaFile(path..'/client/core/'..file)
         end
         
-        print("[CELib] Loaded with successfully !")
-        print(CELib.Author)
-        print(CELib.Version)
+        Msg( "///////////////////////////////\n" )
+        Msg( "//            CELIB By       //\n" )
+        print("//          "..CELib.Author..  "   //")
+        Msg( "//            Version :      //\n" )
+        print("//             "..CELib.Version..  "         //")
+        Msg( "///////////////////////////////\n" )
+        Msg( "// Loading...                //\n" )
+        Msg( "//  autorun/celib.lua        //\n" )
+        Msg( "//  vgui/cebaseframe.lua     //\n" )
+        Msg( "//  vgui/cebutton.lua        //\n" )
+        Msg( "//  vgui/cl_anims.lua        //\n" )
+        Msg( "//  core/baseshadow.lua      //\n" )
+        Msg( "//  core/cl_derma.lua        //\n" )
+        Msg( "//  core/draw.lua            //\n" )
+        Msg( "//  core/utils.lua           //\n" )
+        Msg( "//  core/resources_download.lua //\n" )
+        Msg( "// Load Complete!            //\n" )
+        Msg( "///////////////////////////////\n" )
+    
+
+
     end
     
     //////////////////
