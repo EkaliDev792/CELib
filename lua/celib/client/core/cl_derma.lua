@@ -14,6 +14,12 @@ concommand.Add("celib_derma", function ()
     button2:SetPos(255,50)
     button2:SetText( "Texte de test numéro 1" )
 	button2:SetSize(200,50)
+
+    
+    local color = vgui.Create("CELib.ColorPicker",mainPanel)
+    color:SetPos(255,50)
+	color:SetSize(200,50)
+
 end)
 
 
