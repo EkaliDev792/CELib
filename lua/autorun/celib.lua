@@ -1,4 +1,7 @@
 CELib = CELib or {}
+CELib.Version = "v 1.0"
+CELib.Author = "Cafeur & Ekali"
+
 
 local path = 'celib'
 
@@ -32,6 +35,8 @@ local function Loading()
         end
         
         print("[CELib] Loaded with successfully !")
+        print(CELib.Author)
+        print(CELib.Version)
     end
     
     //////////////////
