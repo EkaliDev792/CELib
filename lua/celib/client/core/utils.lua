@@ -147,3 +147,46 @@ function CELib.GetPlayerBySteamID64(stid)
 
     return pl
 end
+
+-- Récupère les informations avancé d'un joueur, et on peut bouclé dessus !
+/*
+    CELib.GetAdvancedPlayerGetAll().ply -> Récupère le joueur ( l'entité )
+    CELib.GetAdvancedPlayerGetAll().name -> Récupère le nom du joueur
+    CELib.GetAdvancedPlayerGetAll().rank -> Récupère le groupe du joueur
+    CELib.GetAdvancedPlayerGetAll().health -> Récupère la vie du joueur
+    CELib.GetAdvancedPlayerGetAll().armor -> Récupère l'armure du joueur
+    CELib.GetAdvancedPlayerGetAll().team -> Récupère la team du joueur
+    CELib.GetAdvancedPlayerGetAll().teamName -> Récupère le nom de la team du joueur
+    CELib.GetAdvancedPlayerGetAll().steamid -> Récupère le steamid
+    CELib.GetAdvancedPlayerGetAll().steamid64 -> Récupère le steamid64
+    CELib.GetAdvancedPlayerGetAll().steamname -> Récupère le nom steam
+    CELib.GetAdvancedPlayerGetAll().steamprofile -> Récupère le profile steam
+*/
+function CELib.GetAdvancedPlayerGetAll()
+
+    local tbl = {}
+
+    for k, v in ipairs(player.GetAll()) do
+
+        if not v:SteamID64() then continue end
+
+        local nl = {
+            ["ply"] = v,
+            ["name"] = v:Name(),
+            ["rank"] = v:GetUserGroup(),
+            ["health"] = v:Health(),
+            ["armor"] = v:Armor(),
+            ["team"] = v:Team(),
+            ["teamName"] = team.GetName(v:Team()),
+            ["steamid"] = v:SteamID(),
+            ["steamid64"] = v:SteamID64(),
+            ["steamname"] = v:SteamName(),
+            ["steamprofile"] = "https://steamcommunity.com/profiles/".. v:SteamID64(),
+        }
+
+        tbl[#tbl + 1] = nl
+    end
+
+    return tbl
+
+end
