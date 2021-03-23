@@ -19,10 +19,16 @@ concommand.Add("celib_derma", function ()
     color:SetPos(90,150)
 	color:SetSize(300,300)
 
-    -- local combo = vgui.Create("CELib.Combobox",mainPanel)
-    -- combo:SetPos(90,150)
-	-- combo:SetSize(100,100)
-
+    local combo = vgui.Create("CELib.Combobox",mainPanel)
+    combo:SetPos(145,120)
+	combo:SetSize(200,25)
+    combo:SetValue( "Test-CELIB" )
+    combo:AddChoice("TEST - CHOICE")
+    combo:AddChoice("TEST - CHOICE")
+    combo:AddChoice("TEST - CHOICE")
+    combo.OnSelect = function( self, index, value )
+        print( value .." was selected at index " .. index )
+    end
 
 end)
 
