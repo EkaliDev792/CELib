@@ -149,7 +149,7 @@ function CELib.GetPlayerBySteamID64(stid)
 end
 
 -- Récupère les informations avancé d'un joueur, et on peut bouclé dessus !
-/*
+--[[
     CELib.GetAdvancedPlayerGetAll().ply -> Récupère le joueur ( l'entité )
     CELib.GetAdvancedPlayerGetAll().name -> Récupère le nom du joueur
     CELib.GetAdvancedPlayerGetAll().rank -> Récupère le groupe du joueur
@@ -161,13 +161,11 @@ end
     CELib.GetAdvancedPlayerGetAll().steamid64 -> Récupère le steamid64
     CELib.GetAdvancedPlayerGetAll().steamname -> Récupère le nom steam
     CELib.GetAdvancedPlayerGetAll().steamprofile -> Récupère le profile steam
-*/
+]]
 function CELib.GetAdvancedPlayerGetAll()
-
     local tbl = {}
 
     for k, v in ipairs(player.GetAll()) do
-
         if not v:SteamID64() then continue end
 
         local nl = {
@@ -181,38 +179,33 @@ function CELib.GetAdvancedPlayerGetAll()
             ["steamid"] = v:SteamID(),
             ["steamid64"] = v:SteamID64(),
             ["steamname"] = v:SteamName(),
-            ["steamprofile"] = "https://steamcommunity.com/profiles/".. v:SteamID64(),
+            ["steamprofile"] = "https://steamcommunity.com/profiles/" .. v:SteamID64(),
         }
 
         tbl[#tbl + 1] = nl
     end
 
     return tbl
-
 end
 
 -- Récupère le joueur qu'il regarde
 function CELib.WhoPlayerLook()
-
-    local plSee = LocalPlayer():GetEyeTrace().Entity 
-
+    local plSee = LocalPlayer():GetEyeTrace().Entity
     if not plSee:IsPlayer() then return end
 
     return plSee
-
 end
 
 -- Récupère les informations avancée de la position du joueur
-/*
+--[[
     CELib.GetPos(LocalPlayer()).x = position x
     CELib.GetPos(LocalPlayer()).y = position y
     CELib.GetPos(LocalPlayer()).z = position z
     CELib.GetPos(LocalPlayer()).a = angle
     CELib.GetPos(LocalPlayer()).eyepos = position de ou le joueur regarde
 
-*/
+]]
 function CELib.GetPos(ply)
-
     local pos = ply:GetPos()
 
     local nl = {
@@ -227,11 +220,11 @@ function CELib.GetPos(ply)
 end
 
 -- Récupère les différentes vitesses du joueur
-/*
+--[[
     CELib.GetSpeed(ply).speed_run -> Récupère la vitesse de course
     CELib.GetSpeed(ply).speed_walk -> Récupère la vitesse de marche
     CELib.GetSpeed(ply).speed_crouch -> Récupère la vitesse accroupie
-*/
+]]
 function CELib.GetSpeed(ply)
     local spd_run = ply:GetRunSpeed()
     local spd_walk = ply:GetWalkSpeed()
@@ -244,27 +237,21 @@ function CELib.GetSpeed(ply)
     }
 
     return nl
-
 end
 
 -- Merci DARZ <3
-
-/*
+--[[
     CELib.DownloadMaterialURL("url de l'image", "repertoire", "nom de limage dans le repertoire") 
-*/
-
-function CELib.DownloadMaterialURL(...) 
-
+]]
+function CELib.DownloadMaterialURL(...)
     if not ... then return end
 
-    local args = { ... }
+    local args = {...}
 
     local url = args[1]
     local dir = args[2]
     local matName = args[3]
-
-    local path = dir.."/".. matName .. '.png'
-
+    local path = dir .. "/" .. matName .. ".png"
     failed = failed or function() end
 
     http.Fetch(url, function(body)
@@ -274,13 +261,13 @@ function CELib.DownloadMaterialURL(...)
             return
         end
 
-        if (not file.IsDir(dir, 'DATA')) then
+        if (not file.IsDir(dir, "DATA")) then
             file.CreateDir(dir)
         end
 
         local ok = pcall(function()
             file.Write(path, body)
-            success(Material('data/' .. path, 'noclamp smooth'))
+            success(Material("data/" .. path, "noclamp smooth"))
         end)
 
         if not ok then
@@ -290,36 +277,29 @@ function CELib.DownloadMaterialURL(...)
 end
 
 function CELib.IsDownloadMatURL(...)
-
     if not ... then return end
 
-    local args = { ... }
+    local args = {...}
 
     local url = args[1]
     local dir = args[2]
     local matName = args[3]
-
-    local path = dir.."/".. matName .. '.png'
-
-    if file.Exists(path, 'DATA') then
-        return Material('data/' .. path, 'noclamp smooth')
-    end
+    local path = dir .. "/" .. matName .. ".png"
+    if file.Exists(path, "DATA") then return Material("data/" .. path, "noclamp smooth") end
 
     return CELib.DownloadMaterialURL(url, dir, matName)
 end
 
 function CELib.RemoveDownloadedMatURL(...)
-
     if not ... then return end
 
-    local args = { ... }
+    local args = {...}
 
     local dir = args[1]
     local matName = args[2]
+    local path = dir .. "/" .. matName .. ".png"
 
-    local path = dir.."/".. matName .. '.png'
-
-    if file.Exists(path, 'DATA') then
+    if file.Exists(path, "DATA") then
         file.Delete(path)
     end
 
