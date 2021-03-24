@@ -13,12 +13,14 @@ function PANEL:Init()
 	self.BackgroundColor = Color(41, 61, 86)
 
 	self.DropButton.Paint = function( panel, w, h ) end
+	self.ComboText = "Choisir un item"
 
 	self:SetText( "" )
 	self:SetContentAlignment( 4 )
 	self:SetTextInset( 2, 0 )
 	self:SetIsMenu( true )
 	self:SetSortItems( true )
+	
 
 	self:SetTall( 35 )
 	self:SetFont( "CELib:19" )
@@ -41,8 +43,9 @@ end
 
 function PANEL:Paint( w, h )
 		draw.RoundedBoxEx( 5, 0, 0, w, h, self.BackgroundColor, self.BorderRounded[ 1 ], self.BorderRounded[ 2 ], false, false )
-		draw.SimpleText("A FIX", "CELib:18", w/2, h/2, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
-	end
+		draw.SimpleText(self:GetSelected() or self.ComboText, "CELib:19", w/2, h/2, Color(255,255,255), TEXT_ALIGN_CENTER, TEXT_ALIGN_CENTER)
+		return true
+end
 
 function PANEL:OpenMenu( pControlOpener )
 
