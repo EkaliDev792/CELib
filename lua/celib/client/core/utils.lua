@@ -126,9 +126,7 @@ end
 function CELib.GetAdvancedPlayerGetAll()
     local tbl = {}
 
-    for k, v in ipairs(player.GetAll()) do
-        if not v:SteamID64() then continue end
-
+    for k, v in ipairs(player.GetHumans()) do
         local nl = {
             ["ply"] = v,
             ["name"] = v:Name(),
