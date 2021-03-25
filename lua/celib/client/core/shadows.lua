@@ -1,5 +1,5 @@
 if BSHADOWS == nil then
-    BSHADOWS = {}
+    local BSHADOWS = {}
     
     --The original drawing layer
     BSHADOWS.RenderTarget = GetRenderTarget("bshadows_original", ScrW(), ScrH())
@@ -132,4 +132,6 @@ if BSHADOWS == nil then
             render.DrawScreenQuad()
         end
     end
-    end
+
+    CELib.Shadows = BSHADOWS
+end

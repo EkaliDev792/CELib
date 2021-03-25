@@ -52,9 +52,9 @@ end
 function PANEL:Paint(w, h)
     if self:GetShadowFrame() then
         local x, y = self:LocalToScreen(0, 0)
-        CELib.BeginDrawShadow()
-        draw.RoundedBox(2, x, y, w, h, self:GetColorFrame() or Color(23, 32, 42))
-        CELib.EndDrawShadow(2, 4, 2, 255)
+        CELib.Shadows.BeginShadow()
+            draw.RoundedBox(2, x, y, w, h, self:GetColorFrame() or Color(23, 32, 42))
+        CELib.Shadows.EndShadow(2, 4, 2, 255)
     else
         draw.RoundedBox(2, 0, 0, w, h, self:GetColorFrame() or Color(23, 32, 42))
     end
