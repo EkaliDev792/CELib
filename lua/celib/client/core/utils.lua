@@ -37,31 +37,22 @@ function CELib.GetDateTime()
     return os.date("%d/%m/%Y - %H:%M:%S")
 end
 
--- Récupère la personne la plus riche sur le serveur -> CELib.GetMostRich().name -> nom du joueur
+-- Récupère la personne la plus riche sur le serveur -> PLAYER or nil
 function CELib.GetMostRich()
-    local tbl = {}
-
+    
+    local mostRich
+    local targetMoney = 0
     for _, v in pairs(player.GetAll()) do
-        local nl = {
-            ["ply"] = v,
-            ["name"] = v:Name(),
-            ["money"] = v:getDarkRPVar("money")
-        }
-
-        tbl[#tbl + 1] = nl
+        if not IsValid(v) then continue end
+            
+        local vMoney = v:getDarkRPVar("money")
+        if targetMoney < vMoney then
+            targetMoney = vMoney
+            mostRich = v
+        end
     end
-
-    for k, v in SortedPairsByMemberValue(tbl, "money", true) do
-        tbl = {
-            ["ply"] = v.ply,
-            ["name"] = v.name,
-            ["money"] = v.money
-        }
-
-        break
-    end
-
-    return tbl
+    
+    return mostRich
 end
 
 -- Récupère la personne la plus pauvre sur le serveur -> CELib.GetMostRich().name -> nom du joueur
