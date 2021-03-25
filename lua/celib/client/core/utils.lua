@@ -90,14 +90,10 @@ end
     brands
 
 ]]
-function CELib.GetAllFontAwesomeIcon()
-    local icons = {}
-
-    http.Fetch("https://raw.githubusercontent.com/gluons/Font-Awesome-Icon-Chars/master/character-list/character-list.json", function(body)
-        icons = util.JSONToTable(body)
+function CELib.GetFontAwesomeIcons(res)
+    http.Fetch("https://raw.githubusercontent.com/gluons/Font-Awesome-Icon-Chars/master/character-list/character-list.json", function(...)
+        res(util.JSONToTable(body), ...)
     end)
-
-    return icons
 end
 
 -- Sers à créer une font avec plusieurs size différentes rapidement -> fontname:size
