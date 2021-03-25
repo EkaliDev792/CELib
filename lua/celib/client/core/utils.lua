@@ -38,7 +38,7 @@ function CELib.GetDateTime()
 end
 
 -- Récupère la personne la plus riche sur le serveur -> PLAYER or nil
-function CELib.GetMostRich()
+function CELib.GetRichestPlayer()
     
     local mostRich
     local targetMoney = 0
@@ -56,7 +56,7 @@ function CELib.GetMostRich()
 end
 
 -- Récupère la personne la plus pauvre sur le serveur -> CELib.GetMostRich().name -> nom du joueur
-function CELib.GetMostPoor()
+function CELib.GetPoorestPlayer()
     local tbl = {}
 
     for _, v in pairs(player.GetAll()) do
