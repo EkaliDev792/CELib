@@ -121,24 +121,6 @@ function CELib.CreateFontSize(fontname, myname, ...)
     end
 end
 
--- Récupère et vérifie si un joueur est connecté avec un steamid
-function CELib.GetPlayerBySteamID(stid)
-    if not stid then return end
-    local pl = player.GetBySteamID(stid)
-    if not pl then return false end
-
-    return pl
-end
-
--- Récupère et vérifie si un joueur est connecté avec un steamid64
-function CELib.GetPlayerBySteamID64(stid)
-    if not stid then return end
-    local pl = player.GetBySteamID64(stid)
-    if not pl then return false end
-
-    return pl
-end
-
 -- Récupère les informations avancé d'un joueur, et on peut bouclé dessus !
 --[[
     CELib.GetAdvancedPlayerGetAll().ply -> Récupère le joueur ( l'entité )
