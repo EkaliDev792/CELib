@@ -121,6 +121,25 @@ function CELib.CreateFontSize(fontname, myname, ...)
     end
 end
 
+local tblFont = {}
+
+function CELib.Font(fontname, Taille)
+    local namefont = ("CELib:Font:" .. tostring(Taille))
+    if tbFont[namefont] then return nameresp end
+
+    surface.CreateFont(namefont, {
+        font = fontname,
+        size = Taille,
+        weight = 500,
+        antialias = true,
+        extended = true
+    })
+
+    tblFont[namefont] = true
+
+    return namefont
+end
+
 -- Récupère et vérifie si un joueur est connecté avec un steamid
 function CELib.GetPlayerBySteamID(stid)
     if not stid then return end
