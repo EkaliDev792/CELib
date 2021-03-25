@@ -5,7 +5,7 @@ CELib.CreateFontSize("Espera", "CELib", 28, 19)
 function PANEL:Init()
 
 
-	local mat = "materials/arrow2.png"
+	local mat = "materials/celib/arrow.png"
 	self.ChoiceIcons = { }
 	self.Spacers = { }
 	self.BorderRounded = { true, true, true, true }

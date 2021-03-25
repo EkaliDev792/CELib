@@ -1,5 +1,5 @@
 local PANEL = {}
-local ColorWheel = Material("materials/colorwheel.png")
+local ColorWheel = Material("materials/celib/colorwheel.png")
 AccessorFunc(PANEL, 'colorrgb', 'Color')
 
 function PANEL:Init()

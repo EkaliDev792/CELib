@@ -2,7 +2,7 @@ local PANEL = {}
 CELib.CreateFontSize("Espera", "CELib", 28, 19)
 AccessorFunc( PANEL, 'check', 'Checked', FORCE_BOOL )
 AccessorFunc( PANEL, 'color', 'CheckColor' )
--- local mat = Material("materials/check.png")
+-- local mat = Material("materials/celib/check.png")
 function PANEL:Init( )
 
 	self:SetSize( 15, 15 )
