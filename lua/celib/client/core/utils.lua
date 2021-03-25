@@ -55,31 +55,19 @@ function CELib.GetMostRich()
     return mostRich
 end
 
--- Récupère la personne la plus pauvre sur le serveur -> CELib.GetMostRich().name -> nom du joueur
+-- Récupère la personne la plus pauvre sur le serveur -> CELib.GetMostRich():Name() -> nom du joueur
 function CELib.GetMostPoor()
-    local tbl = {}
-
+    local money, ply
+    
     for _, v in pairs(player.GetAll()) do
-        local nl = {
-            ["ply"] = v,
-            ["name"] = v:Name(),
-            ["money"] = v:getDarkRPVar("money")
-        }
-
-        tbl[#tbl + 1] = nl
+        local amount = v:getDarkRPVar("money")
+        if not money or amount < money then
+            money = amount
+            ply = v
+        end
     end
 
-    for k, v in SortedPairsByMemberValue(tbl, "money", false) do
-        tbl = {
-            ["ply"] = v.ply,
-            ["name"] = v.name,
-            ["money"] = v.money
-        }
-
-        break
-    end
-
-    return tbl
+    return ply
 end
 
 -- Récupère toutes les icons de font awesome exemeple pour get toutes les solids -> icons.solid
