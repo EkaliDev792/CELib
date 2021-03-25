@@ -7,10 +7,6 @@ local path = 'celib'
 
 local function Loading()
 
-    //////////////////
-    // SERVEUR LOAD //
-    //////////////////
-
     if SERVER then
 
         local files = file.Find(path..'/server/*.lua', 'LUA')
@@ -34,32 +30,8 @@ local function Loading()
             AddCSLuaFile(path..'/client/core/'..file)
         end
         
-        -- Msg( "///////////////////////////////\n" )
-        -- Msg( "//            CELIB By       //\n" )
-        -- print("//          "..CELib.Author..  "   //")
-        -- Msg( "//            Version :      //\n" )
-        -- print("//             "..CELib.Version..  "         //")
-        -- Msg( "///////////////////////////////\n" )
-        -- Msg( "// Loading...                //\n" )
-        -- Msg( "//  autorun/celib.lua        //\n" )
-        -- Msg( "//  vgui/cebaseframe.lua     //\n" )
-        -- Msg( "//  vgui/cebutton.lua        //\n" )
-        -- Msg( "//  vgui/cl_anims.lua        //\n" )
-        -- Msg( "//  core/baseshadow.lua      //\n" )
-        -- Msg( "//  core/cl_derma.lua        //\n" )
-        -- Msg( "//  core/draw.lua            //\n" )
-        -- Msg( "//  core/utils.lua           //\n" )
-        -- Msg( "//  core/resources_download.lua //\n" )
-        -- Msg( "// Load Complete!            //\n" )
-        -- Msg( "///////////////////////////////\n" )
-    
-
-
     end
-    
-    //////////////////
-    // CLIENT LOAD //
-    //////////////////
+
 
     if CLIENT then
         local files = file.Find(path..'/shared/*.lua', 'LUA')
