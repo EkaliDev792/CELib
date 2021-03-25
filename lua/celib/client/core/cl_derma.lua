@@ -30,6 +30,11 @@ concommand.Add("celib_derma", function ()
         print( value .." was selected at index " .. index )
     end
 
+    local checkbox = vgui.Create( "CELib.CheckBox", mainPanel)
+    checkbox:SetPos( 125, 125 )
+    checkbox:SetValue( false )
+    checkbox:SetCheckColor(Color(255,255,255))
+
 end)
 
 
